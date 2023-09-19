@@ -9,5 +9,10 @@ import com.learning.restapi.entity.Cycle;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
     
-    List<Cycle> findByUser_Id(long userId);
+    List<Cart> findByUser_Id(long userId);
+
+    List<Cart> findByUser_IdAndBookedFalse(long userId);
+
+    Cart findById(long id);
+    
 }

@@ -1,5 +1,7 @@
 package com.learning.restapi.entity;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,25 +10,23 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
-public class Cart {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") 
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private Cycle cycle;
-
-    private int quantity;
-
-    private boolean booked;
-
-    private boolean returned;
+    private double totalAmount;
+    private double remainingAmount;
+    private boolean isReturned;
+    private LocalDateTime rentalStartTime;
+    private LocalDateTime rentalEndTime;
     
 }
