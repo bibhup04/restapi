@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+</head>
+<body>
+    <h1>User Details</h1>
+    
+    <ul id="userList"></ul>
+
+    <script>
+        // Fetch user data from the RESTful API
+        fetch('/api/users/')
+            .then(response => response.json())
+            .then(users => {
+                const userList = document.getElementById('userList');
+
+                users.forEach(user => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Username: ${user.username}, Email: ${user.email}`;
+                    userList.appendChild(listItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    </script>
+</body>
+</html>
